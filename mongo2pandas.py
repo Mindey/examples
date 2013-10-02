@@ -8,6 +8,9 @@ dic = {1 : [{'keyword1': { 'conversions1': 2,  'cost1': 1}}],
 
 
 # Converting dictionary to Pandas Series:
+# Write your own loop, depending on the kind of JSON you have,
+# and the kind of DataFrame you want to create. For instance:
+
 tuples = []
 values = []
 
@@ -24,7 +27,7 @@ names = ['dates', 'keywords', 'attributes']
 s = DataFrame(values, index=MultiIndex.from_tuples(tuples, names=names))[0]
 type(s); s
 
-# DataFrames
+# Converting Series to desired Pandas DataFrames:
 df = s.unstack(['keywords','attributes']); type(df); df
 df1 = s.ix[:,'keyword1'].unstack('attributes'); type(df1); df1
 df2 = s.ix[:,:,'value'].unstack('keywords'); type(df2); df2
